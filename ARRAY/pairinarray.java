@@ -15,3 +15,9 @@ public class pairinarray {
     }
     
 }
+
+
+// FIND TOTAL NUMBER OF PAIRS
+// {
+//     Total number of pair = n(n-1)/2
+// }
