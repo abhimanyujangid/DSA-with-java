@@ -55,12 +55,25 @@ public class recursions {
         return sortedArray(arr, i + 1);
     }
 
+    // ==========First Occurence=====
+    public static int firstOccurencer(int[] array, int key, int i) {
+        if (i == array.length - 1) {
+            return -1;
+        }
+        if (array[i] == key) {
+            return 1;
+        }
+        return firstOccurencer(array, key, i+1);
+    }
+
     public static void main(String[] args) {
-        int arr[] = { 1 };
+        int array[] = {1,2,3,4,5,6,7,85,6,7,85};
+        int arr[] = { 1,2,3,4,5,6,7,8 };
         printNumber(5);
         System.out.println(factorial(-4));
         System.out.println(nacturalNumberSum(10));
         System.out.println(fibonachi(4));
         System.out.println(sortedArray(arr, 0));
+        System.out.println(firstOccurencer(arr, 5, 0));
     }
 }
