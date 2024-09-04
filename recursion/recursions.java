@@ -66,14 +66,91 @@ public class recursions {
         return firstOccurencer(array, key, i+1);
     }
 
+    //============Last Occurence==========
+    public static int lastOccurence(int[] array, int key, int i){
+        if (i == array.length - 1) {
+            return -1;
+        }
+        int isFound = lastOccurence(array, key,i+1);
+        if(isFound == -1 && array[i] == key){
+            return i;
+        }
+
+        return isFound;
+    }
+    //=============power ====================
+    // O(n)
+    public static int power(int x ,int n){
+        if(n == 0){
+            return 1;
+        }
+        return  x * power(x, n-1);
+
+    }
+    //=============Optimize power ====================
+    //O(logn)
+    public static int OptimizePower(int a ,int n){
+        if (n == 0) {
+            return 1;
+        }
+        // For even 
+        int hafpower = OptimizePower(a, n/2);
+        int hafPowerSquar = hafpower * hafpower;
+        // for odd
+        if (n%2!=0) {
+        hafPowerSquar = a * hafPowerSquar;
+        }
+        return hafPowerSquar;
+    }
+    //==================Tilling Problem========
+    public static int tillingProblem(int n){ // 2 x n (floor size)
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // kam
+        //vertical choice
+        int fnm1 = tillingProblem(n-1);
+
+        //horizontal choice
+        int fnm2 = tillingProblem(n-2);
+        int total = fnm1 + fnm2;
+        return total;
+    }
+
+    //=========remove dublicate=====
+    public static void removeDublicate(String str , int idx, StringBuilder newStr , boolean map[] ){
+        if( idx == str.length()){
+            System.out.println(newStr);
+            return;
+        }
+
+        //work
+        char currChar = str.charAt(idx);
+        if (map[currChar-'a']== true) {
+            //dublicate
+            removeDublicate(str, idx+1, newStr, map);
+            
+        }else{
+            map[currChar - 'a'] = true;
+            removeDublicate(str, idx+1, newStr.append(currChar), map);
+        }
+    }
+
     public static void main(String[] args) {
-        int array[] = {1,2,3,4,5,6,7,85,6,7,85};
+        int array[] = {1,1,1,1};
         int arr[] = { 1,2,3,4,5,6,7,8 };
-        printNumber(5);
-        System.out.println(factorial(-4));
-        System.out.println(nacturalNumberSum(10));
-        System.out.println(fibonachi(4));
-        System.out.println(sortedArray(arr, 0));
-        System.out.println(firstOccurencer(arr, 5, 0));
+        String str =  "appnnaacollengee";
+        // printNumber(5);
+        // System.out.println(factorial(-4));
+        // System.out.println(nacturalNumberSum(10));
+        // System.out.println(fibonachi(4));
+        // System.out.println(sortedArray(arr, 0));
+        // System.out.println(lastOccurence(array, 1, 0));
+       
+        // System.out.println(OptimizePower(2, 30));
+        // System.out.println(power(2, 30));
+        //System.out.println(tillingProblem(24));
+        removeDublicate(str, 0, new StringBuilder(""), new boolea n[26]);
+
     }
 }
