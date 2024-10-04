@@ -136,6 +136,31 @@ public class recursions {
         }
     }
 
+    // 16. Friend Pairing problem
+
+    public static int friendPairingProblem(int n){
+        if (n == 1 || n == 2) {
+            return n;
+            
+        }
+        int forSinglePair= friendPairingProblem(n-1);
+        int forDoublePair= friendPairingProblem(n-2);
+        int totalPairing = forSinglePair + (n-1)* forDoublePair ;
+        return totalPairing;
+    }
+
+    // 17. Binary String problem -Paytem (print all binary string of size n without consecutive ones).
+
+    public static void consecutiveOnesNot(int n , int lastPlace, String str){
+        if (n==0) {
+            System.out.println(str);
+            return;
+        }
+        consecutiveOnesNot(n-1, 0, str+"0");
+        if (lastPlace == 0) {
+            consecutiveOnesNot(n-1, 1, str+"1");
+        }
+    }
     public static void main(String[] args) {
         int array[] = {1,1,1,1};
         int arr[] = { 1,2,3,4,5,6,7,8 };
@@ -150,7 +175,9 @@ public class recursions {
         // System.out.println(OptimizePower(2, 30));
         // System.out.println(power(2, 30));
         //System.out.println(tillingProblem(24));
-        removeDublicate(str, 0, new StringBuilder(""), new boolea n[26]);
+        // removeDublicate(str, 0, new StringBuilder(""), new boolean[26]);
+        //System.out.println(friendPairingProblem(3));
+        consecutiveOnesNot(7, 0, str);
 
     }
 }
